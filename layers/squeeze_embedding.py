@@ -11,7 +11,7 @@ import numpy as np
 class SqueezeEmbedding(nn.Module):
     """
     Squeeze sequence embedding length to the longest one in the batch
-    """
+    """#压缩序列嵌入长度为批次中最长的一个
     def __init__(self, batch_first=True):
         super(SqueezeEmbedding, self).__init__()
         self.batch_first = batch_first
