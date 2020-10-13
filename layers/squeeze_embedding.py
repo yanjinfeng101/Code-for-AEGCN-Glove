@@ -10,8 +10,8 @@ import numpy as np
 
 class SqueezeEmbedding(nn.Module):
     """
-    Squeeze sequence embedding length to the longest one in the batch
-    """
+    Squeeze sequence embedding length to the longest one in the batch#挤压序列嵌入长度为批次中最长的
+    """#句子的表示，lstm只会作用到它实际长度的句子，而不是通过无用的padding字符
     def __init__(self, batch_first=True):
         super(SqueezeEmbedding, self).__init__()
         self.batch_first = batch_first
@@ -23,9 +23,9 @@ class SqueezeEmbedding(nn.Module):
         :param x_len: numpy/tensor list
         :return:
         """
-        """sort"""
-        x_sort_idx = torch.sort(-x_len)[1].long()
-        x_unsort_idx = torch.sort(x_sort_idx)[1].long()
+        """sort"""#print(aspect_len),tensor([1,....,2,1])
+        x_sort_idx = torch.sort(-x_len)[1].long()#二维数据，dim=1是按行排序，-的话应该是从大到小吧
+        x_unsort_idx = torch.sort(x_sort_idx)[1].long()#从小到大
         x_len = x_len[x_sort_idx]
         x = x[x_sort_idx]
         """pack"""
